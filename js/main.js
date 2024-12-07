@@ -34,3 +34,18 @@ function createSelectOptions(users) {
     return options;
 }
 
+function toggleCommentSection(postId) {
+    if (!postId) {
+        return undefined;
+    }
+
+    var button = document.querySelector(`button[data-post-id='${postId}']`);
+
+    if (!button) {
+        return undefined;
+    }
+
+    button.classList.toggle('hide');
+
+    return button;
+}
