@@ -90,3 +90,27 @@ function deleteChildElements(parentElement) {
 
     return parentElement;
 }
+
+function addButtonListeners() {
+    var buttons = document.querySelectorAll('main button');
+
+    for (let i = 0; i < buttons.length; i++) {
+        var button = buttons[i];
+        var postId = button.dataset.postId;
+        if (!postId) {
+            continue;
+        }
+
+        console.log(button);
+
+        button.addEventListener("click", function(e) {
+            toggleComments(e, postId);
+        });
+    }
+
+    return buttons;
+}
+
+function toggleComments(e, postId) {
+    //
+}
