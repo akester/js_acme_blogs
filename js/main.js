@@ -39,13 +39,33 @@ function toggleCommentSection(postId) {
         return undefined;
     }
 
-    var button = document.querySelector(`button[data-post-id='${postId}']`);
+    var section = document.querySelector(`section[data-post-id='${postId}']`);
 
-    if (!button) {
+    if (!section) {
+        return null;
+    }
+
+    section.classList.toggle('hide');
+
+    return section;
+}
+
+function toggleCommentButton(postId) {
+    if (!postId) {
         return undefined;
     }
 
-    button.classList.toggle('hide');
+    var button = document.querySelector(`button[data-post-id='${postId}']`);
+
+    if (!button) {
+        return null;
+    }
+
+    if (button.textContent == 'Show Comments') {
+        button.textContent = 'Hide Comments';
+    } else {
+        button.textContent = 'Show Comments';
+    }
 
     return button;
 }
