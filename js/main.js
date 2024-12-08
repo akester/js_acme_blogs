@@ -111,6 +111,24 @@ function addButtonListeners() {
     return buttons;
 }
 
+function removeButtonListeners() {
+    var buttons = document.querySelectorAll('main button');
+
+    for (let i = 0; i < buttons.length; i++) {
+        var button = buttons[i];
+        var postId = button.dataset.postId;
+        if (!postId) {
+            continue;
+        }
+
+        console.log(button);
+
+        button.removeEventListener("click", function(e){});
+    }
+
+    return buttons
+}
+
 function toggleComments(e, postId) {
     //
 }
