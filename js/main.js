@@ -191,6 +191,23 @@ async function getPostComments(postId) {
         .then((response) => response.json());
 }
 
+async function displayComments(postId) {
+    if (!postId) {
+        return undefined;
+    }
+
+    var section = document.createElement('section');
+    section.dataset.postId = postId;
+    section.classList.add('comments', 'hide');
+
+    var comments = await getPostComments(postId);
+    var fragment = createComments(comments);
+
+    section.append(fragment);
+    console.log(section);
+    return section;
+}
+
 function toggleComments(e, postId) {
     //
 }
