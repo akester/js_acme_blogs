@@ -129,6 +129,25 @@ function removeButtonListeners() {
     return buttons
 }
 
+function createComments(comments) {
+    if (!comments) {
+        return undefined;
+    }
+    
+    var fragment = document.createDocumentFragment();
+
+    for (let i = 0; i < comments.length; i++) {
+        var comment = comments[i];
+        var article = document.createElement('article');
+        article.append(createElemWithText('h3', comment.name));
+        article.append(createElemWithText('p', comment.body));
+        article.append(createElemWithText('p', `From: ${comment.email}`));
+        fragment.append(article);
+    }
+
+    return fragment;
+}
+
 function toggleComments(e, postId) {
     //
 }
