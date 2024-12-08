@@ -182,6 +182,15 @@ async function getUser(userId) {
         .then((response) => response.json());
 }
 
+async function getPostComments(postId) {
+    if (!postId) {
+        return undefined;
+    }
+
+    return fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
+        .then((response) => response.json());
+}
+
 function toggleComments(e, postId) {
     //
 }
