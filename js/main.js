@@ -165,11 +165,20 @@ async function getUsers() {
         .then((response) => response.json());
 }
 
-async function getUserPosts(userId) {[]
+async function getUserPosts(userId) {
     if (!userId) {
         return undefined;
     }
     return fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+        .then((response) => response.json());
+}
+
+async function getUser(userId) {
+    if (!userId) {
+        return undefined;
+    }
+
+    return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
         .then((response) => response.json());
 }
 
