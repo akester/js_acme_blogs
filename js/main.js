@@ -160,6 +160,11 @@ function populateSelectMenu (users) {
     return select
 }
 
+async function getUsers() {
+    return fetch('https://jsonplaceholder.typicode.com/users')
+        .then((response) => response.json());
+}
+
 function toggleComments(e, postId) {
     //
 }
