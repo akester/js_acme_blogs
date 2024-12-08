@@ -133,7 +133,7 @@ function createComments(comments) {
     if (!comments) {
         return undefined;
     }
-    
+
     var fragment = document.createDocumentFragment();
 
     for (let i = 0; i < comments.length; i++) {
@@ -146,6 +146,18 @@ function createComments(comments) {
     }
 
     return fragment;
+}
+
+function populateSelectMenu (users) {
+    if (!users) {
+        return undefined;
+    }
+
+    var select = document.getElementById("selectMenu");
+    var elements = createSelectOptions(users);
+    select.append(...elements);
+
+    return select
 }
 
 function toggleComments(e, postId) {
