@@ -105,7 +105,7 @@ function addButtonListeners() {
 
         button.addEventListener("click", function(e) {
             toggleComments(e, postId);
-        });
+        }, false);
     }
 
     return buttons;
@@ -323,3 +323,7 @@ function initApp() {
     var select = document.getElementById('selectMenu');
     select.addEventListener('change', selectMenuChangeEventHandler);
 }
+
+addEventListener("DOMContentLoaded", (event) => {
+    initApp();
+});
