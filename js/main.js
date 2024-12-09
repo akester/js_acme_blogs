@@ -265,3 +265,22 @@ function toggleComments(e, postId) {
 
     return out;
 }
+
+async function refreshPosts(posts) {
+    if (!posts) {
+        return undefined;
+    }
+    
+    var buttons = removeButtonListeners();
+    var main = document.getElementsByTagName('main')[0];
+    main = deleteChildElements(main);
+    var fragment = await displayPosts(posts);
+    var buttons2 = addButtonListeners();
+
+    return [
+        buttons,
+        main,
+        fragment,
+        buttons2
+    ];
+}
