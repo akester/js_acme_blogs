@@ -239,6 +239,19 @@ async function createPosts(posts) {
     return fragment;
 }
 
+async function displayPosts(posts) {
+    var main = document.getElementsByTagName('main')[0];
+
+    if (!posts) {
+        return createElemWithText('p', 'Select an Employee to display their posts.', 'default-text');
+    }
+
+    var postElements = await createPosts(posts);
+    main.append(postElements);
+
+    return postElements;
+}
+
 function toggleComments(e, postId) {
     //
 }
