@@ -316,3 +316,10 @@ async function initPage() {
         select,
     ];
 }
+
+function initApp() {
+    initPage();
+
+    var select = document.getElementById('selectMenu');
+    select.addEventListener('change', selectMenuChangeEventHandler);
+}
