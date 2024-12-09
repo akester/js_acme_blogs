@@ -208,6 +208,37 @@ async function displayComments(postId) {
     return section;
 }
 
+async function createPosts(posts) {
+    if (!posts) {
+        return undefined;
+    }
+
+    var fragment = document.createDocumentFragment();
+    for (let i = 0; i < posts.length; i++) {
+        var post = posts[i];
+        var article = document.createElement('article')
+        
+        article.append(createElemWithText('h2', post.title));
+        article.append(createElemWithText('p', post.body));
+        article.append(createElemWithText('p', `Post ID: ${post.id}`));
+        
+        var author = await getUser(post.userId);
+        article.append(createElemWithText('p', `Author: ${author.name} with ${author.company.name}`));
+        article.append(createElemWithText('p', author.company.catchPhrase));
+
+        var button = createElemWithText('button', 'Show Comments');
+        button.dataset.postId = post.id;
+        article.append(button);
+
+        var section = await displayComments(post.id);
+        article.append(section);
+
+        fragment.append(article);
+    }
+
+    return fragment;
+}
+
 function toggleComments(e, postId) {
     //
 }
