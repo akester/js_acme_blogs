@@ -270,7 +270,7 @@ async function refreshPosts(posts) {
     if (!posts) {
         return undefined;
     }
-    
+
     var buttons = removeButtonListeners();
     var main = document.getElementsByTagName('main')[0];
     main = deleteChildElements(main);
@@ -282,5 +282,27 @@ async function refreshPosts(posts) {
         main,
         fragment,
         buttons2
+    ];
+}
+
+async function selectMenuChangeEventHandler(e) {
+    if (!e) {
+        return undefined;
+    }
+
+    var select = document.getElementById('selectMenu');
+    select.disabled = true;
+    var userId = e?.target?.value || 1;
+
+    var posts = await getUserPosts(userId);
+    var postsArray = await refreshPosts(posts);
+    select.disabled = false;
+
+    console.log(posts);
+
+    return [
+        userId,
+        posts,
+        postsArray
     ];
 }
