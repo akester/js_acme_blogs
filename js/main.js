@@ -253,5 +253,15 @@ async function displayPosts(posts) {
 }
 
 function toggleComments(e, postId) {
-    //
+    if (!postId) {
+        return undefined;
+    }
+
+    e.target.listener = true;
+
+    var out = [];
+    out.push(toggleCommentSection(postId));
+    out.push(toggleCommentButton(postId));
+
+    return out;
 }
