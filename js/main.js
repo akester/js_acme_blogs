@@ -306,3 +306,13 @@ async function selectMenuChangeEventHandler(e) {
         postsArray
     ];
 }
+
+async function initPage() {
+    var users = await getUsers();
+    var select = populateSelectMenu(users);
+
+    return [
+        users,
+        select,
+    ];
+}
